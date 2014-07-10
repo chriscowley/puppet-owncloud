@@ -9,9 +9,9 @@ class owncloud::install (
     creates => $filename,
     path    => '/usr/bin/',
   }
-#  exec { 'tar xf /opt/staging/owncloud-${version}.tar.bz2':
-#    cwd => '/var/www/',
-#    creates => '/var/www/owncloud',
-#    require => Exec["$url /opt/staging/owncloud-${version}.tar.bz2"],
-#  }
+  exec { "/bin/tar xf ${filename}":
+    cwd => '/var/www/',
+    creates => '/var/www/owncloud',
+    require => Exec["curl -o ${filename} ${url}"],
+  }
 }
