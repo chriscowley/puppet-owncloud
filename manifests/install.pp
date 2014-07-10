@@ -5,8 +5,9 @@ class owncloud::install (
   $filename = $owncloud::filename,
 ) {
   exec { "curl -o $filename $url":
-    cwd => '/opt/staging',
+    cwd => '/opt/',
     creates => $filename,
+    path    => '/usr/bin/',
   }
 #  exec { 'tar xf /opt/staging/owncloud-${version}.tar.bz2':
 #    cwd => '/var/www/',
