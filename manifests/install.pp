@@ -1,11 +1,11 @@
 # == Class owncloud::install
 #
-class owncloud::install (
-  $url = "${url_base}/owncloud-${version}.tar.bz2"
-){
-  exec { "$url /opt/staging/owncloud-${version}.tar.bz2":
+class owncloud::install {
+  $url = $owncloud::url
+  $filename = $owncloud::filename
+  exec { "curl -o $filename $url":
     cwd => '/opt/staging',
-    creates => "/opt/staging/owncloud-${version}.tar.bz2"
+    creates => $filename,
   }
 #  exec { 'tar xf /opt/staging/owncloud-${version}.tar.bz2':
 #    cwd => '/var/www/',

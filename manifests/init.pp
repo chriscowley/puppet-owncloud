@@ -8,14 +8,13 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class owncloud (
-  $url_base = $owncloud::params::url_base
-  $version  = $owncloud::params::version
+  $filename = $owncloud::filename,
+  $url = $owncloud::url,
 ) inherits owncloud::params {
 
   # validate parameters here
 
   class { 'owncloud::install': } ->
-  class { 'owncloud::config': } ~>
-  class { 'owncloud::service': } ->
+  class { 'owncloud::config': } ->
   Class['owncloud']
 }
