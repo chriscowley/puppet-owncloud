@@ -8,8 +8,8 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class owncloud (
-  $filename = $owncloud::filename,
-  $url = $owncloud::url,
+  $filename = $owncloud::params::filename,
+  $url      = $owncloud::params::url,
 ) inherits owncloud::params {
 
   # validate parameters here

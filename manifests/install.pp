@@ -1,8 +1,9 @@
 # == Class owncloud::install
 #
-class owncloud::install {
-  $url = $owncloud::url
-  $filename = $owncloud::filename
+class owncloud::install (
+  $url      = $owncloud::url,
+  $filename = $owncloud::filename,
+) {
   exec { "curl -o $filename $url":
     cwd => '/opt/staging',
     creates => $filename,
