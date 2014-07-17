@@ -8,4 +8,7 @@ class owncloud::params {
   $releasever = '7.0.0RC1'
   $url        = "${url_base}/owncloud-${releasever}.tar.bz2"
   $filename   = "/opt/owncloud-${releasever}.tar.bz2"
+  $webserver  = 'nginx'
+  $servername = undef
+  $ssl        = undef
 }
