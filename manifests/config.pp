@@ -7,7 +7,5 @@ class owncloud::config {
     'nginx': {
       $vhost_template = 'owncloud/nginx_conf.erb'
     }
-    default: {
-      fail("${owncloud::webserver} not supported")
-    }
+  }
 }
