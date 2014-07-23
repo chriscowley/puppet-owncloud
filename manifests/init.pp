@@ -18,8 +18,8 @@ class owncloud (
   $dbuser        = $owncloud::params::dbuser,
   $dbpassword    = $owncloud::params::dbpassword,
   $dbtableprefix = $owncloud::params::dbtableprefix,
-  $instanceid    = $owncloud::params::instanceid
-  $passwordsalt  = $owncloud::params::passwordsalt
+  $instanceid    = $owncloud::params::instanceid,
+  $passwordsalt  = $owncloud::params::passwordsalt,
 ) inherits owncloud::params {
 
   # validate parameters here
