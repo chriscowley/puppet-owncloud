@@ -6,40 +6,18 @@
 
 
 $CONFIG = array(
-/* Flag to indicate ownCloud is successfully installed (true = installed) */
   "installed" => true,
-  /* Type of database, can be sqlite, mysql or pgsql */
   "dbtype" => "<%= @dbtype %>",
-
-  /* Name of the ownCloud database */
   "dbname" => "<%= @dbname %>",
-
-  /* User to access the ownCloud database */
   "dbuser" => "<%= @dbuser %>",
-
-  /* Password to access the ownCloud database */
   "dbpassword" => "<%= @dbpassword %>",
-
-  /* Host running the ownCloud database. To specify a port use "HOSTNAME:####"; to specify a unix sockets use "localhost:/path/to/socket". */
   "dbhost" => "<%= @dbhost %>",
-
-  /* Prefix for the ownCloud tables in the database */
   "dbtableprefix" => "<%= @dbtableprefix %>",
-
-  /* Define the salt used to hash the user passwords. All your user passwords are lost if you lose this string. */
   "passwordsalt" => "",
-
-  /* Force use of HTTPS connection (true = use HTTPS) */
   "forcessl" => false,
-
-  /* Blacklist a specific file and disallow the upload of files with this name - WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING. */
   "blacklisted_files" => array('.htaccess'),
-
-  /* The automatic hostname detection of ownCloud can fail in certain reverse proxy situations. This option allows to manually override the automatic detection. You can also add a port. For example "www.example.com:88" */
   "overwritehost" => "",
-
-/* The automatic protocol detection of ownCloud can fail in certain reverse proxy situations. This option allows to manually override the protocol detection. For example "https" */
-"overwriteprotocol" => "",
+  "overwriteprotocol" => "",
 
 /* The automatic webroot detection of ownCloud can fail in certain reverse proxy situations. This option allows to manually override the automatic detection. For example "/domain.tld/ownCloud". The value "/" can be used to remove the root. */
 "overwritewebroot" => "",
