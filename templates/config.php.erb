@@ -9,22 +9,22 @@ $CONFIG = array(
 /* Flag to indicate ownCloud is successfully installed (true = installed) */
   "installed" => true,
   /* Type of database, can be sqlite, mysql or pgsql */
-  "dbtype" => "<%= dbtype %>",
+  "dbtype" => "<%= @dbtype %>",
 
   /* Name of the ownCloud database */
-  "dbname" => "<%= dbname %>",
+  "dbname" => "<%= @dbname %>",
 
   /* User to access the ownCloud database */
-  "dbuser" => "<%= dbuser %>",
+  "dbuser" => "<%= @dbuser %>",
 
   /* Password to access the ownCloud database */
-  "dbpassword" => "<%=dbpassword %>",
+  "dbpassword" => "<%= @dbpassword %>",
 
   /* Host running the ownCloud database. To specify a port use "HOSTNAME:####"; to specify a unix sockets use "localhost:/path/to/socket". */
-  "dbhost" => "<%= dbhost %>",
+  "dbhost" => "<%= @dbhost %>",
 
   /* Prefix for the ownCloud tables in the database */
-  "dbtableprefix" => "<%= dbtableprefix %>",
+  "dbtableprefix" => "<%= @dbtableprefix %>",
 
   /* Define the salt used to hash the user passwords. All your user passwords are lost if you lose this string. */
   "passwordsalt" => "",
