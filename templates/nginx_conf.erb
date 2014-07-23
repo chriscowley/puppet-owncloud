@@ -24,13 +24,22 @@ server {`
     <% else %>
     listen       80;
     <% end %>
-    server_name <% @servermame %>;
+    if <% servername %>
+    server_name <% @servername %>;
+    <% else %>
+    server_name _;
+    <% end %>
     client_max_body_size 50G;
 
     
     root   /var/www/owncloud/;
-    access_log /var/log/nginx/<% @servermame %>_access.log;
-    error_log /var/log/nginx/<% @servermame %>_error.log;
+    <% if @servername == "_" -%>
+    access_log /var/log/nginx/owncloud_access.log;
+    error_log /var/log/nginx/owncloud_error.log;
+    <% else %>
+    access_log /var/log/nginx/<% @servername %>_access.log;
+    error_log /var/log/nginx/<% @servername %>_error.log;
+    <% end %>
     fastcgi_buffers 64 4K;
     
     rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
@@ -70,8 +79,10 @@ server {`
         fastcgi_index  index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$1;
         fastcgi_param PATH_INFO $2;
-	fastcgi_param HTTPS on;
-	try_files $1 = 404;
+        <% if $ssl %>
+        fastcgi_param HTTPS on;
+        <% end -%>
+        try_files $1 = 404;
         
         include        fastcgi_params;
     }
