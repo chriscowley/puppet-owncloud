@@ -22,23 +22,25 @@ server {`
     ssl_certificate /etc/nginx/cert/owncloud.crt;
     ssl_certificate_key /etc/nginx/cert/owncloud.key;
     <% else %>
+    <% if @servername %>
     listen       80;
+    <% else %>
+    listen       80 default_server;
     <% end %>
-    if <% servername %>
+    <% end %>
+    <% if @servername %>
     server_name <% @servername %>;
     <% else %>
     server_name _;
     <% end %>
-    client_max_body_size 50G;
-
-    
+    client_max_body_size 4G;
     root   /var/www/owncloud/;
-    <% if @servername == "_" -%>
-    access_log /var/log/nginx/owncloud_access.log;
-    error_log /var/log/nginx/owncloud_error.log;
-    <% else %>
+    <% if @servername %>
     access_log /var/log/nginx/<% @servername %>_access.log;
     error_log /var/log/nginx/<% @servername %>_error.log;
+    <% else %>
+    access_log /var/log/nginx/owncloud_access.log;
+    error_log /var/log/nginx/owncloud_error.log;
     <% end %>
     fastcgi_buffers 64 4K;
     
