@@ -12,7 +12,7 @@ class owncloud (
   $url        = $owncloud::params::url,
   $servername = $owncloud::params::servername,
   $webserver  = $owncloud::params::webserver,
-  $webserver  = $owncloud::params::ssl,
+  $ssl        = $owncloud::params::ssl,
 ) inherits owncloud::params {
 
   # validate parameters here

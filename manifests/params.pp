@@ -4,11 +4,17 @@
 # It sets variables according to platform
 #
 class owncloud::params {
-  $url_base   = 'http://download.owncloud.org/community/testing/'
-  $releasever = '7.0.0RC1'
-  $url        = "${url_base}/owncloud-${releasever}.tar.bz2"
-  $filename   = "/opt/owncloud-${releasever}.tar.bz2"
-  $webserver  = 'nginx'
-  $servername = undef
-  $ssl        = undef
+  $url_base      = 'http://download.owncloud.org/community/testing/'
+  $releasever    = '7.0.0RC1'
+  $url           = "${url_base}/owncloud-${releasever}.tar.bz2"
+  $filename      = "/opt/owncloud-${releasever}.tar.bz2"
+  $webserver     = 'nginx'
+  $servername    = undef
+  $ssl           = undef
+  $dbtype        = 'sqlite'
+  $dbname        = 'owncloud'
+  $dbuser        = undef
+  $dbpassword    = undef
+  $dbtableprefix = 'oc_'
+
 }
