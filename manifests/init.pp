@@ -13,6 +13,11 @@ class owncloud (
   $servername = $owncloud::params::servername,
   $webserver  = $owncloud::params::webserver,
   $ssl        = $owncloud::params::ssl,
+  $dbtype        = $owncloud::params::dbtype,
+  $dbname        = $owncloud::params::$dbname,
+  $dbuser        = $owncloud::params::$dbuser,
+  $dbpassword    = $owncloud::params::$dbpassword,
+  $dbtableprefix = $owncloud::params::$dbtableprefix,
 ) inherits owncloud::params {
 
   # validate parameters here
