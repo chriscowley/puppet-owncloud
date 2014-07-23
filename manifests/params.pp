@@ -16,6 +16,6 @@ class owncloud::params {
   $dbuser          = undef
   $dbpassword      = undef
   $dbtableprefix   = 'oc_'
-  $instanceid      = ${::uuid}
-  $passwordsalt    = ${::uuid}
+  $instanceid      = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
+  $passwordsalt    = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
 }
