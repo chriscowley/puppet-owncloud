@@ -19,13 +19,16 @@ class owncloud::config (
         }
       }
       $vhost_template = 'owncloud/nginx_conf.erb'
+      file { $vhost_conf:
+        content => template($vhost_template),
+      }
+    }
+    'none': {
+
     }
     default: {
       fail("${owncloud::webserver} not supported")
     }
-  }
-  file { $vhost_conf:
-    content => template($vhost_template),
   }
   if $config_owncloud == true {
     file { '/var/www/owncloud/config/config.php.test':

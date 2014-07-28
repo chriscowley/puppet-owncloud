@@ -5,10 +5,10 @@ upstream php-handler {
   #server unix:/var/run/php5-fpm.sock;
 }
 
-<% if $ssl %>
+<% if @ssl %>
 server {
   listen 80;
-  server_name <% @servername %>;
+  server_name <%= @servername -%>;
   return 301 https://$server_name$request_uri;  # enforce https
 }
 <% end -%>
@@ -22,22 +22,18 @@ server {
     ssl_certificate /etc/nginx/cert/owncloud.crt;
     ssl_certificate_key /etc/nginx/cert/owncloud.key;
     <% else %>
-    <% if @servername %>
     listen       80;
-    <% else %>
-    listen       80 default_server;
-    <% end %>
     <% end %>
     <% if @servername %>
-    server_name <% @servername %>;
+    server_name <%= @servername -%>;
     <% else %>
     server_name _;
     <% end %>
     client_max_body_size 4G;
     root   /var/www/owncloud/;
     <% if @servername %>
-    access_log /var/log/nginx/<% @servername %>_access.log;
-    error_log /var/log/nginx/<% @servername %>_error.log;
+    access_log /var/log/nginx/<%= @servername -%>_access.log;
+    error_log /var/log/nginx/<%= @servername -%>_error.log;
     <% else %>
     access_log /var/log/nginx/owncloud_access.log;
     error_log /var/log/nginx/owncloud_error.log;
