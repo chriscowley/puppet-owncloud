@@ -9,7 +9,8 @@ class owncloud::params {
   $url             = "${url_base}/owncloud-${releasever}.tar.bz2"
   $filename        = "/opt/owncloud-${releasever}.tar.bz2"
   $webserver       = 'nginx'
-  $servername      =  undef
+  $servername      = undef
+  $config_owncloud = false
   $ssl             = undef
   $dbtype          = 'sqlite'
   $dbname          = 'owncloud'

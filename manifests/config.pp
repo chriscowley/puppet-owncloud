@@ -2,7 +2,9 @@
 #
 # This class is called from owncloud
 #
-class owncloud::config {
+class owncloud::config (
+  $config_owncloud = $owncloud::config_owncloud,
+) {
 #  $vhost_conf = '/etc/nginx/conf.d/owncloud.conf'
 #  $vhost_template = 'owncloud/nginx_conf.erb'
 
@@ -25,8 +27,10 @@ class owncloud::config {
   file { $vhost_conf:
     content => template($vhost_template),
   }
-  file { '/var/www/owncloud/config/config.php.test':
-    content => template('owncloud/config.php.erb'),
-    require => Class['owncloud::install']
+  if $config_owncloud == true {
+    file { '/var/www/owncloud/config/config.php.test':
+      content => template('owncloud/config.php.erb'),
+      require => Class['owncloud::install']
+    }
   }
 }
