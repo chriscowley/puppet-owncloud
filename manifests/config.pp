@@ -5,7 +5,7 @@
 class owncloud::config {
 #  $vhost_conf = '/etc/nginx/conf.d/owncloud.conf'
 #  $vhost_template = 'owncloud/nginx_conf.erb'
-  
+
   case $owncloud::webserver {
     'nginx': {
       case $::osfamily {
