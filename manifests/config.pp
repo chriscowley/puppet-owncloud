@@ -31,7 +31,7 @@ class owncloud::config (
     }
   }
   if $config_owncloud == true {
-    file { '/var/www/owncloud/config/config.php.test':
+    file { '/var/www/owncloud/config/config.php':
       content => template('owncloud/config.php.erb'),
       require => Class['owncloud::install']
     }

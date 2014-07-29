@@ -13,48 +13,81 @@
 
 ##Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+Installs Owncloud and optionally configures [Owncloud](http://www.owncloud.org).
 
 ##Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
-
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+The most simple options just deploy Owncloud. Optionally, it can also configure both Owncloud and the web server (currenly on Nginx/PHP-FPM).
 
 ##Setup
 
 ###What owncloud affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+* The installer file is placed in /`opt`.
+* This install is expanded into `/var/www/owncloud`
+
+Optional:
+* The configuration file `/var/www/owncloud/config/config.php` is created
+* The configuration file for Nginx is created
 
 ###Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
+Only `curl` needs to be installed. For the module to work, no others are required. Other modules to control your web server and PHP are required.
+
+For larger installs, you will also need MySQL.
+
+Personally I use:
+
+* PHP: http://forge.puppetlabs.com/thias/php
+* NGinx: http://forge.puppetlabs.com/garethr/nginx
+* MySQL: http://forge.puppetlabs.com/puppetlabs/mysql
+
+You can use whatever suits you (or even none at all if that is what floats your boat).
 
 ###Beginning with owncloud
 
-The very basic steps needed for a user to get the module up and running. 
+The most basic usage is 
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+```
+node owncloud.example.com {
+    class { 'owncloud': }
+}
+```
+
+Or if using Hiera:
+
+```
+---
+classes:
+  - owncloud
+```
+
+That will just install version 7.0.0 (current at time of writing). No configuration is performed.
 
 ##Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+A more advanced use case would be:
 
-##Reference
+```
+---
+classes:
+  - mysql
+  - owncloud
+owncloud::releasever: 7.1.0
+owncloud::webserver: nginx
+owncloud::ssl
+owncloud::servername: owncloud.example.com
+```
 
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+Should be pretty self-explanitory, but this will install Owncloud 7.1.0, then configure Nginx with an SSL virtual Host.
+
 
 ##Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Currently tested only on CentOS 6. It will not work on Debian/Ubuntu, but I have put `case` statements in place to make it easy in the future.
+
+Currently only supports Nginx as the web server. Again, `case` statements are there to allow support for other web servers.
 
 ##Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-##Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+Feel free to fork and send any pull requests.
