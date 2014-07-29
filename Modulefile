@@ -1,4 +1,4 @@
-name          'puppet-owncloud'
+name          'chriscowley-owncloud'
 version       '0.1.0'
 source        'https://github.com/chriscowley/puppet-owncloud.git'
 author        'Chris Cowley'

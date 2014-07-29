@@ -1,0 +1,20 @@
+{
+  "name": "chriscowley-owncloud",
+  "version": "0.1.r0,
+  "author": "Chris Cowley",
+  "license": "Licensed under (Apache 2.0)",
+  "summary": "Module for installing and (optionally) configuring Owncloud",
+  "source": "https://github.com/chriscowley/puppet-owncloud.git",
+  "project_page": "https://github.com/chriscowley/puppet-owncloud",
+  "issues_url": "https://github.com/chriscowley/puppet-owncloud/issues",
+  "tags": ["owncloud" ],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "6.0" ]
+    }
+  ]
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" },
+  ] 
+}
