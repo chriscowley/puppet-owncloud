@@ -3,7 +3,8 @@
 class owncloud::install (
   $url            = $owncloud::url,
   $filename       = $owncloud::filename,
-  $clear_skeleton = $owncloud::clear_skeleton
+  $clear_skeleton = $owncloud::clear_skeleton,
+  $webserver_user = $owncloud::webserver_user,
 ) {
   exec { "curl -o ${filename} ${url}":
     cwd     => '/opt/',
@@ -19,6 +20,11 @@ class owncloud::install (
   }
   file { '/var/www':
     ensure => directory,
+  }
+  file { '/var/www/owncloud':
+    require => File["/bin/tar xf ${filename}"],
+    owner   => $webserver_user,
+    recurse => true,
   }
   if $clear_skeleton == true {
     file { '/var/www/owncloud/core/skeleton/photos':

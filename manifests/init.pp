@@ -12,6 +12,7 @@ class owncloud (
   $url             = $owncloud::params::url,
   $servername      = $owncloud::params::servername,
   $webserver       = $owncloud::params::webserver,
+  $webserver_user  = $owncloud::params::webserver_user
   $config_owncloud = $owncloud::params::config_owncloud,
   $ssl             = $owncloud::params::ssl,
   $dbtype          = $owncloud::params::dbtype,

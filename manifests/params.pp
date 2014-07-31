@@ -20,4 +20,13 @@ class owncloud::params {
   $instanceid      = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
   $passwordsalt    = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
   $clear_skeleton  = false
+  case $::osfamily  {
+    'redhat': {
+      $webserver_user = 'apache'
+    }
+    'debian': {
+      $webserver_user = 'www-data'
+    }
+    default: { fail('Unsupported distribution')}
+  }
 }
