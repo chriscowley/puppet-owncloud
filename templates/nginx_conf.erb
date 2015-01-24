@@ -79,7 +79,7 @@ server {
         fastcgi_param PATH_INFO $2;
         <% if @ssl -%>fastcgi_param HTTPS on;<%- end %>
         try_files $1 = 404;
-        
+        fastcgi_read_timeout 300;
         include        fastcgi_params;
     }
     location ~* \.(jpg|png|gif|jpeg|css|js|mp3|wav|swf|mov|doc|pdf|xls|ppt|docx|pptx|xlsx)$ {
