@@ -23,12 +23,6 @@ class owncloud::config (
         content => template($vhost_template),
       }
     }
-    'none': {
-
-    }
-    default: {
-      fail("${owncloud::webserver} not supported")
-    }
   }
   if $config_owncloud == true {
     file { '/var/www/owncloud/config/config.php':

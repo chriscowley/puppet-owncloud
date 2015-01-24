@@ -8,7 +8,7 @@ class owncloud::params {
   $releasever      = '7.0.0'
   $url             = "${url_base}/owncloud-${releasever}.tar.bz2"
   $filename        = "/opt/owncloud-${releasever}.tar.bz2"
-  $webserver       = 'nginx'
+  $webserver       = undef
   $servername      = undef
   $config_owncloud = false
   $ssl             = undef
@@ -20,6 +20,7 @@ class owncloud::params {
   $instanceid      = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
   $passwordsalt    = '7b3626c84bb02d12472c03d2ece878fdc4756c94'
   $clear_skeleton  = false
+  $extra_utils_url = undef
   case $::osfamily  {
     'redhat': {
       $webserver_user = 'apache'
